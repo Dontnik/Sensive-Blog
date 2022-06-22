@@ -82,7 +82,7 @@
                     </div>
                   </div>
                 </div>
-                <p>{{post.text|truncatechars:200}}</p>
+                <p>{{post.text}}</p>
                <div class="news_d_footer flex-column flex-sm-row">
                  <a href="#"><span class="align-middle mr-2"><i class="ti-heart"></i></span>{{post.likes_amount}}</a>
                  <a class="justify-content-sm-center ml-sm-auto mt-sm-0 mt-2" href="#"><span class="align-middle mr-2"><i class="ti-themify-favicon"></i></span>{{post.comments_amount}}</a>
@@ -94,18 +94,17 @@
              </div>
                </div>
               </div>
-
-
                 <div class="comments-area">
                     <h4>{{post.comments_amount}}</h4>
                     <div class="comment-list">
+                      {% for comment in post.comments %}
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="desc">
-                                    <h5><a href="#">{{post.author}}</a></h5>
-                                    <p class="date">{{post.published_at}}</p>
+                                    <h5><a href="#">{{comment.author}}</a></h5>
+                                    <p class="date">{{comment.published_at}}</p>
                                     <p class="comment">
-                                       {{post.text}}
+                                       {{comment.text}}
                                     </p>
                                 </div>
                             </div>
@@ -113,39 +112,7 @@
                                     <a href="" class="btn-reply text-uppercase">reply</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="desc">
-                                    <h5><a href="#">{{post.author}}</a></h5>
-                                    <p class="date">{{post.published_at}}</p>
-                                    <p class="comment">
-                                        {{post.text}}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="reply-btn">
-                                    <a href="" class="btn-reply text-uppercase">reply</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="desc">
-                                    <h5><a href="#">{{post.author}}</a></h5>
-                                    <p class="date">{{post.published_at}}</p>
-                                    <p class="comment">
-                                        Never say goodbye till the end comes!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="reply-btn">
-                                    <a href="" class="btn-reply text-uppercase">reply</a>
-                            </div>
-                        </div>
-                    </div>
+                      {% endfor %}
                 </div>
         </div>
 
